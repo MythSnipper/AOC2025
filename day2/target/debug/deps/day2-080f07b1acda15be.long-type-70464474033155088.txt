@@ -1,0 +1,2 @@
+(u64, Result<u64, ParseIntError>)
+Result<u64, ParseIntError>
