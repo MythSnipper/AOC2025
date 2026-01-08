@@ -1,6 +1,6 @@
 
 fn main() {
-    let input = include_str!("test_input");
+    let input = include_str!("puzzle_input");
     println!("part 1: {}", solve_part1(input));
     println!("part 2: {}", solve_part2(input));
 }
@@ -88,11 +88,11 @@ fn solve_part2(input: &str) -> String {
     let mut i: usize = 0;
     for op in &operations{
         let operands = solve_part2_helper2(&input, &mut i);
-        let acc: u64 = if *op == '*'{1}else if *op == '+'{0}else{panic!()};
-        for o in operands{
-            print!("{}, ", o);
+        let mut acc: u64 = if *op == '*'{1}else if *op == '+'{0}else{panic!()};
+        for meow in operands{
+            acc = if *op == '*'{acc * meow}else if *op == '+'{acc + meow}else{panic!()};
         }
-        println!("  {}\n", op);
+        ret += acc;
     }
 
     return format!("{}", ret);
@@ -102,11 +102,11 @@ fn solve_part2(input: &str) -> String {
 fn solve_part2_helper1(input: &Vec<Vec<char>>, index: &mut usize) -> bool {
     for line in input{
         if line[*index] != ' '{
-            println!("Nein!");
+            //println!("Nein!");
             return false;
         }
     }
-    println!("Ja!");
+    //println!("Ja!");
     return true;
 }
 //scans for one problem
